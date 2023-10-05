@@ -1,5 +1,4 @@
 import re
-import svgwrite
 
 def html_to_string(file_path):
     try:
@@ -21,12 +20,9 @@ html_string = html_to_string(file_path)
 
 if html_string:
     output_string = extract_text_between_tags(html_string)
-    # Replace '&lt;' with '<' and '&gt;' with '>'
     final_string = output_string.replace('&lt;', '<').replace('&gt;', '>')
-
-    print("Final String (text between '>' and '<' with replacements):")
-    print(final_string)
     
+    # Create the svg file 
     output = open("output.svg", "w")
     output.write(final_string)
     output.close()
